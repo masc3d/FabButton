@@ -1,6 +1,7 @@
 package com.example.kurt.demo;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Handler;
 
 import mbanje.kurt.fabbutton.FabButton;
@@ -45,6 +46,7 @@ public class ProgressHelper {
     public void startDeterminate() {
         button.resetIcon();
         currentProgress = 0;
+        button.setProgressColor(Color.CYAN);
         button.showProgress(true);
         button.setProgress(currentProgress);
         getRunnable(activity).run();
