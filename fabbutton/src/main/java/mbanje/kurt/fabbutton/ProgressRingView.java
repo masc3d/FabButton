@@ -182,6 +182,7 @@ public class ProgressRingView extends View implements FabUtil.OnFabValueCallback
     public void setProgressColor(int progressColor) {
         this.progressColor = progressColor;
         progressPaint.setColor(progressColor);
+        this.invalidate();
     }
 
 

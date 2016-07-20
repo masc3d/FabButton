@@ -132,6 +132,10 @@ public class FabButton extends FrameLayout implements CircleImageView.OnFabViewL
         circle.setColor(color);
     }
 
+    public void setProgressColor(int color) {
+        ring.setProgressColor(color);
+    }
+
     public void setIcon(Drawable icon, Drawable endIcon) {
         circle.setIcon(icon, endIcon);
     }
