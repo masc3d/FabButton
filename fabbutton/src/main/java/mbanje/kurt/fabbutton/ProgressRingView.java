@@ -171,7 +171,10 @@ public class ProgressRingView extends View implements FabUtil.OnFabValueCallback
 
 
     public void setIndeterminate(boolean indeterminate) {
+        Boolean changed = (indeterminate != this.indeterminate);
         this.indeterminate = indeterminate;
+        if (changed)
+            this.resetAnimation();
     }
 
     public void setAnimDuration(int animDuration) {
