@@ -22,6 +22,16 @@
  * THE SOFTWARE.
  */
 
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.0'
+    }
+}
+
 plugins {
     id 'com.jfrog.bintray' version '1.6'
 }
@@ -29,22 +39,27 @@ plugins {
 apply plugin: 'maven-publish'
 apply plugin: 'com.android.library'
 
-version = "1.2.2"
-group = "mbanje.kurt"
+group 'mbanje.kurt'
+version '1.2.2'
 
 def siteUrl = 'https://github.com/ckurtm/FabButton'
 def gitUrl = 'https://github.com/ckurtm/FabButton.git'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 11
         versionName version
     }
+
+    lintOptions {
+        abortOnError false
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -54,12 +69,13 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support:design:24.2.1'
 }
 
 Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
+def localPropertiesFile = project.rootProject.file('local.properties')
+if (localPropertiesFile.exists())
+    properties.load(localPropertiesFile.newDataInputStream())
 
 publishing {
     publications {
